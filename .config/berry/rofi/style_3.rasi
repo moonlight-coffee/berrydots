@@ -1,0 +1,117 @@
+configuration {
+	font:							"JetBrainsMono 11";
+    show-icons:                     true;
+	icon-theme: 					"Papirus";
+    display-drun: 					"";
+    drun-display-format:            "{name}";
+    disable-history:                false;
+	sidebar-mode: 					true;
+}
+
+@import "~/.config/berry/rofi/colors.rasi"
+
+window {
+    transparency:                   "real";
+    background-color:               @bg;
+    text-color:                     @fg;
+	border:							0px;
+	border-color:					@ac;
+    border-radius:                  0px;
+	height:							100%;
+	width:							19%;
+    location:                       east;
+    x-offset:                       -1556;
+    y-offset:                       0;
+}
+
+prompt {
+    enabled: 						true;
+	padding: 						1.5% 1% 1% 1%;
+	background-color: 				@ac;
+	text-color: 					@bg;
+        border-radius: 1%;
+	font:							"JetBrainsMono 17";
+}
+
+entry {
+    background-color:               @al;
+    text-color:                     @bg;
+    border-radius:                  7px 18px 7px 18px;
+    placeholder-color:              @ac;
+    expand:                         true;
+    horizontal-align:               -600;
+    vertical-align:                  200;
+    placeholder:                     " Search";
+    padding:                        1.5% 1% 1.5% ;
+    blink:                          true;
+    show-icons: false;
+}
+
+inputbar {
+	children: 						[ prompt, entry ];
+    background-image: url("img/ss.png");
+    text-color:                     @fg;
+    expand:                         false;
+    border:							0% 0% 0% 0%;
+	
+    margin:                         0% 0% 0% 0%;
+    padding:                        8%;
+}
+
+listview {
+    background-color:               @al;
+    text-color:                     @bg;
+    padding:           5px 0px 0px 0px;
+    border-radius:                10px 10px 10px;
+    columns:                        1;
+    lines:                          1;
+    spacing:                        1%;
+    cycle:                          true;
+    dynamic:                        false;
+    layout:                         vertical;
+    show-icons:                     false;
+}
+
+mainbox {
+    background-color:               @al;
+	border:							0% 0% 0% 0%;
+    border-radius:                  0% 0% 0% 0%;
+	border-color:					@ac;
+    children:                       [ inputbar, listview ];
+    spacing:                       	10px;
+    padding:                        0%;
+}
+
+element {
+    background-color:               @al;
+    text-color:                     @bg;
+    orientation:                    horizontal;
+    border-radius:                  0%;
+    padding:                        1% 0.5% 1% 0.5%;
+}
+
+element-icon {
+    background-color: 				inherit;
+    text-color:       				inherit;
+    horizontal-align:               0.5;
+    vertical-align:                 0.5;
+    size:                           0px;
+    border:                         0px;
+}
+
+element-text {
+    background-color: 				@al;
+    text-color:       				@fg;
+    expand:                         true;
+    horizontal-align:               0;
+    vertical-align:                 0.5;
+    margin:                         0% 0.25% 0% 0.25%;
+}
+
+element selected {
+    background-color:               @ac;
+    text-color:                     @bg;
+	border:							0% 0.4% 0% 0.4%;
+    border-radius:                  10px;
+    border-color:                  	@bg;
+}

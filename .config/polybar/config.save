@@ -1,0 +1,240 @@
+include-file = ~/.config/polybar/colors.ini
+
+
+[bar/main]
+bottom = false
+offset-y = 10
+height = 30
+radius = 10
+fixed-center = false
+wm-restack = bspwm
+override-redirect = true
+border = 0
+
+#line-size = 3
+#line-color = #262626
+
+#border-size = 2
+#border-color = #af9ab1
+#border-radius = 5
+
+
+background = ${color.foreground}
+foreground = ${color.bakcground}
+
+font-0 = "JetBrainsMono:pixelsize=11.5;3"
+font-1 = "FontAwesome:pixelsize=13;3"
+font-2 = "feather:style=Regular:pixelsize=14;4"
+
+module-margin-left = 1
+module-margin-right = 0
+
+
+[bar/one]
+inherit = bar/main
+width = 45%
+height = 50
+radius = 0
+offset-x = 29%
+offset-y = 0.2%
+modules-left = time
+modules-center = bspwm
+modules-right = volume pulseaudio gap baat battery gap
+padding-left = 1
+padding-right = 1
+
+[bar/two]
+inherit = bar/main
+radius = 3
+line-size = 3
+line-color = ${color.background}
+width = 12% 
+height = 45
+offset-y = 0.5%
+offset-x = 44%
+modules-center = bspwm 
+
+[bar/three]
+inherit = bar/main
+width = 10%
+height = 45
+radius = 3
+offset-x = 89%
+offset-y = 0.5%
+modules-center = volume pulseaudio gap baat battery 
+padding-left = 1
+padding-right = 1
+
+
+
+[module/bspwm]
+type = internal/xworkspaces
+enable-scroll = false
+label-active = 
+label-active-foreground = ${color.green}
+#label-active-background = ${color.cyan}
+#label-active-underline = ${color.foreground}
+label-active-padding = 1.5
+
+label-occupied = %icon% 
+label-occupied-underline = 
+label-occupied-padding = 1.5
+label-occupied-foreground = ${color.green}
+
+label-empty = %icon%
+label-empty-foreground = ${color.}
+label-empty-padding = 1.5
+
+icon-0 = 1;
+icon-1 = 2;
+icon-2 = 3;
+icon-3 = 4;
+icon-4 = 5;
+icon-5 = 6;
+
+[module/mpd]
+type = internal/mpd
+
+host = 127.0.0.1
+port = 6600
+format-online = %{A3:alacritty -e ncmpcpp:}%{A1:killall mpd:}<label-song>%{A-, A-}format-online-background = ${color.background}
+format-online-foreground = ${color.magenta}
+label-song = %{T-, F-} %title%
+format-offline = %{A1:mpd:}  %{A-}offline
+format-offline-background = ${color.background}
+format-offline-foreground = ${color.blue}
+label-offline = offline
+interval = 3
+
+
+
+[module/backlight]
+type = internal/backlight
+
+card = intel_backlight
+
+use-actual-brightness = true
+
+enable-scroll = true
+
+format = "<label>"
+format-prefix = "  "
+format-prefix-foreground = ${color.green}
+format-prefix-background = ${color.foreground}
+label =  "%percentage%% "
+label-foreground = ${color.background}
+label-background = ${color.foreground}
+
+[module/wireless-network]
+type = internal/network
+interface = wlp2s0
+interval = 3.0
+udspeed-minwidth = 0
+format-connected = <label-connected> 
+format-disconnected = <label-disconnected>
+# %essid%
+label-connected = "on"
+label-connected-background = ${color.background}
+label-connected-foreground= ${color.foreground}
+;label-connected-background = ${color.alternate}
+label-disconnected =  "off"
+label-disconnected-foreground = ${color.foreground}
+
+[module/time]
+type = internal/date
+interval = 1
+timea-alt = " %I:%M %p"
+time ="%H:%M"
+
+format-prefix = "  " 
+format-prefix-foreground = ${color.green}
+format-prefix-background = ${color.foreground}
+format-foreground = ${color.background}
+format-background = ${color.foreground}
+format-padding = 1
+
+label = %time%
+
+
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+format-volume = <label-volume>
+label-volume = "%percentage%%"
+label-volume-foreground = ${color.background}
+label-muted = "muted"
+label-muted-foreground = ${color.background}
+
+[module/baat]
+type = internal/battery
+label-charging = " "
+label-charging-foreground = ${color.green}
+label-charging-background = ${color.foreground}
+label-discharging-foreground = ${color.green}
+label-discharging-background = ${color.foreground}
+label-discharging = " "
+label-full = " " 
+label-full-foreground = ${color.green}
+label-full-background = ${color.foreground}
+#format-full-prefix = %{T3} 
+#format-full-prefix-foreground = #dfe2ed
+#format-full-prefix-background = #809984
+
+
+
+[module/battery]
+type = internal/battery
+label-charging = "%percentage%%"
+label-charging-foreground = ${color.background}
+label-charging-background = ${color.foreground}
+label-discharging-foreground = ${color.background}
+label-discharging-background = ${color.foreground}
+label-discharging = "%percentage%%"
+label-full = "%percentage%%" 
+label-full-foreground = ${color.background}
+label-full-background = ${color.foreground}
+#format-full-prefix = %{T3} 
+#format-full-prefix-foreground = #dfe2ed
+#format-full-prefix-background = #809984
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+label = "%percentage:2%%"
+
+
+[module/wifis]
+type = custom/text
+content = ""
+content-foreground = ${color.blue}
+content-background = ${color.background}
+
+[module/bat]
+type = custom/text
+content = ""
+content-foreground = ${color.blue}
+content-background = ${color.background}
+
+[module/gap]
+type = custom/text
+content = " "
+
+[module/volume] 
+type = custom/text 
+content = "" 
+content-foreground = ${color.green}
+content-background = ${color.foreground}
+
+[module/cpus] 
+type = custom/text 
+content = " " 
+content-foreground = ${color.green}
+content-background = ${color.background}
+
+[settings]
+screenchange-reload = true
+
+[global/wm]
+margin-top = 0
+margin-bottom = 5
